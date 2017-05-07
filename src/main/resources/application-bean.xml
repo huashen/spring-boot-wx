@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+ http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+ http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+    <context:component-scan base-package="org.lhs.wx"/>
+
+    <bean id="wxPnConfig" class="org.lhs.wx.entity.config.WxPnConfig">
+        <property name="appId" value="wxba719b8fcc0d79dd"/>
+        <property name="appSecret" value="120593e98a5688487712e078e654a1c7"/>
+        <property name="originId" value="gh_4c69b5ff1805"/>
+        <property name="serverToken" value="53339c548a8a7"/>
+        <property name="serverEncodingAESKey" value="aHHOgHl4iBK7pxxwLFz8XC3web6mxd01Ctierq8CGko"/>
+        <property name="welcomeWord" value="雯雯你好啊"/>
+    </bean>
+
+    <!--微信配置服务-->
+    <bean id="wxPnConfigService" class="org.lhs.wx.service.impl.WxPnConfigServiceImpl">
+        <property name="wxPnConfigs">
+            <list>
+                <ref bean="wxPnConfig"/>
+            </list>
+        </property>
+    </bean>
+
+    <!--微信Token guava 存储-->
+    <bean id="wxTokenStore" class="org.lhs.wx.service.impl.GuavaWxTokenStore"/>
+
+    <bean id="wxTokenService" class="org.lhs.wx.service.impl.WxTokenServiceImpl">
+        <property name="wxTokenStore" ref="wxTokenStore"/>
+        <property name="wxPnConfigService" ref="wxPnConfigService"/>
+    </bean>
+
+</beans>
