@@ -10,10 +10,10 @@
     <context:component-scan base-package="org.lhs.wx"/>
 
     <bean id="wxPnConfig" class="org.lhs.wx.entity.config.WxPnConfig">
-        <property name="appId" value="wxba719b8fcc0d79dd"/>
-        <property name="appSecret" value="120593e98a5688487712e078e654a1c7"/>
-        <property name="originId" value="gh_4c69b5ff1805"/>
-        <property name="serverToken" value="53339c548a8a7"/>
+        <property name="appId" value="xxx"/>
+        <property name="appSecret" value="xxx"/>
+        <property name="originId" value="xxx"/>
+        <property name="serverToken" value="xx"/>
         <property name="serverEncodingAESKey" value="aHHOgHl4iBK7pxxwLFz8XC3web6mxd01Ctierq8CGko"/>
         <property name="welcomeWord" value="雯雯你好啊"/>
     </bean>
